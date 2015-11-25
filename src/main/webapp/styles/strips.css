@@ -1,0 +1,269 @@
+/* CSS voor Strips
+ *
+ * @author: Steve Schoonooghe
+ *
+ */
+
+/*------------------*/
+/* Algemene styling */
+/*------------------*/
+
+/*** NORMALIZE ***/
+
+html, body, div, article, nav, ul {
+    margin:0;
+    padding:0;
+}
+
+/*** Body ***/
+body {
+	margin-top: 3em;
+	background-color: #fcffe8;
+	color: #400080;
+	font-family: arial;
+}
+
+header {
+	width: 100%;
+}
+
+#main {
+	width: 95%;
+	margin: auto;
+}
+
+h1 {
+	clear: both;
+}
+
+/*** Index ***/
+
+h1 {
+	text-align: center;
+}
+
+h2 a {
+	color:#ffffff;
+}
+
+#alfabet {
+	background-color:#804000;
+	width:80%;
+	text-align:center;
+	margin-left: auto;
+    margin-right: auto;    
+}
+
+h2.middle {
+	display: inline;
+	color: white;
+}
+
+#indeximage {
+	display: block;
+	max-height: 1000px;
+	max-width: 1000px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+/*** Navigation bar ***/
+nav {
+	background: #400080;
+	color: white;
+	height: 1.8em;
+	margin-bottom: 1em;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+nav  a:hover {
+	text-decoration: none;
+}
+
+nav ul,nav ul li ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav>ul>li {
+	background-color: #400080;
+	float: left;
+	position: relative;
+}
+
+nav ul li a,nav ul li:hover ul {
+	display: block;
+}
+
+nav ul li ul {
+	background-color: #400080;
+	box-shadow: 5px 5px #777777;
+	display: none;
+	position: absolute;
+	width: 20em;
+	z-index: 100;
+}
+
+nav ul li:hover {
+	background-color: #8000ff;
+}
+
+nav>ul>li>a,nav ul li ul li a, #logoutbutton {
+	color: white;
+	line-height: 1.8em;
+	padding: 0 0.5em;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#logoutbutton {
+	background: none;
+	border: none;
+	display: inline;
+	font-size:1em;
+	margin-top: 0;
+	margin-bottom:0;
+}
+
+/*** Tabel ***/
+table, th, td {
+	border: 1px solid silver;
+	border-collapse: collapse;
+	margin-top: 1em;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+thead {
+	color: black;
+	background-color: white;
+}
+
+td, th {
+	postion: relative;
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+}
+
+th {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+}
+
+tbody tr:nth-child(even) {
+	background-color: #FAFAFA;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #E6E6E6;
+}
+
+label {
+	cursor: pointer;
+}
+
+input, select {
+	display: block;
+	font-size: 1.1em;
+	margin-bottom: 1em;
+	margin-top: 0.2em;
+}
+
+input:focus, textarea:focus, select:focus {
+	background-color: #FFFFD6
+}
+
+input[type='checkbox'], input[type='radio'] {
+	display: inline;
+}
+
+label span, .fout {
+	background-color: red;
+	border-bottom-right-radius: 0.5em;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	box-shadow: 5px 5px #777777;
+	margin-left: 0.5em;
+	padding: 0.5em;
+	color: white;
+	font-weight: bold;
+}
+
+label span:empty, .fout:empty {
+	display: none;
+}
+
+.zonderbolletjes {
+	list-style: none;
+	margin-bottom: 0.2em;
+	padding: 0;
+}
+
+.zonderbolletjes li {
+	display: inline;
+	margin-right: 0.2em;
+}
+
+.fullwidth {
+	width: 100%;
+}
+
+.knop {
+	text-decoration: none;
+}
+
+@media print {
+	nav {
+		display: none;
+	}
+}
+
+a {
+	color: black;
+}
+
+dt {
+	clear:left;
+	float: left;
+	width: 15em;
+}
+
+dd {
+	margin-left: 15em;
+	font-weight: bold;
+}
+
+blockquote {
+	margin-left: 0;
+	font-style: italic;
+}
+
+
+#logoutform {
+	display: inline;
+}
+
+@media ( min-width :40em) {
+	.pagineren a {
+		font-weight: bold;
+		color: white;
+		background-color: green;
+		border-bottom-right-radius: 0.5em;
+		border-top-left-radius: 0.5em;
+		border-top-right-radius: 0.5em;
+		padding: 0.4em;
+		text-decoration: none;
+	}
+}
+
+.pagineren a:hover {
+	text-decoration: underline;
+}
+
+#reeksaanvullenbutton {
+	
+}

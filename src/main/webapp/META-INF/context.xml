@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Context path='/strips'>
+  <Resource name='jdbc/stielostrips'
+    type='javax.sql.DataSource' driverClassName='com.mysql.jdbc.Driver'
+    url='jdbc:mysql://localhost/stielostrips'
+    username='stielobeheer' password='FC9ro4.4knipG7is!mus6J'
+    closeMethod='close'/>
+</Context> 
