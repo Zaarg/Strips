@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.no_ip.stieflo.entities.Auteur;
+import org.no_ip.stieflo.entities.Project;
 import org.no_ip.stieflo.exceptions.HeeftNogStripsException;
 import org.no_ip.stieflo.services.AuteurServiceInterface;
 import org.no_ip.stieflo.web.forms.ZoekenForm;
@@ -54,7 +54,7 @@ class AuteurController {
 	ModelAndView auteurZoeken(@Valid ZoekenForm form, BindingResult bindingResult) {   
 		ModelAndView modelAndView = new ModelAndView(AUTEURS_VIEW);
 		if ( ! bindingResult.hasErrors()) {
-		    List<Auteur> auteurs = new ArrayList<>(auteurService.findInNaam(form.getZoekTerm()));
+		    List<Project> auteurs = new ArrayList<>(auteurService.findInNaam(form.getZoekTerm()));
 			if (auteurs.isEmpty()) {
 		    	modelAndView.addObject("nietsgevonden", "De zoekterm werd helaas niet terug gevonden");
 		    	modelAndView.addObject("auteurs", auteurService.findAll());
@@ -68,11 +68,11 @@ class AuteurController {
 	/** -------------------------- Auteur toevoegen -------------------------- **/
 	@RequestMapping(path = "toevoegen", method = RequestMethod.GET)
 	ModelAndView createForm() {
-	  return new ModelAndView(TOEVOEGEN_VIEW, "auteur", new Auteur());
+	  return new ModelAndView(TOEVOEGEN_VIEW, "auteur", new Project());
 	} 
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String create(@Valid Auteur auteur, BindingResult bindingResult) {
+	public String create(@Valid Project auteur, BindingResult bindingResult) {
 	  if (bindingResult.hasErrors()) {
 	    return TOEVOEGEN_VIEW;
 	  }
@@ -82,7 +82,7 @@ class AuteurController {
 	
 	/** -------------------------- Auteur verwijderen -------------------------- **/
 	@RequestMapping(path = "{auteur}/verwijderen", method = RequestMethod.POST) 
-	String delete(@PathVariable Auteur auteur, RedirectAttributes redirectAttributes) { 
+	String delete(@PathVariable Project auteur, RedirectAttributes redirectAttributes) { 
 		if (auteur == null) { 
 			return REDIRECT_AUTEUR_NIET_GEVONDEN;
 		}
@@ -104,7 +104,7 @@ class AuteurController {
 	
 	/** -------------------------- Auteur wijzigen -------------------------- **/
 	@RequestMapping(path ="{auteur}/wijzigen", method = RequestMethod.GET)
-	ModelAndView updateForm(@PathVariable Auteur auteur) { 
+	ModelAndView updateForm(@PathVariable Project auteur) { 
 	  if (auteur == null) {
 	    return new ModelAndView(REDIRECT_AUTEUR_NIET_GEVONDEN);
 	  }
@@ -112,7 +112,7 @@ class AuteurController {
 	} 	
 	
 	@RequestMapping(path = "{id}/wijzigen", method = RequestMethod.POST) 
-	String update(@Valid Auteur auteur, BindingResult bindingResult) {
+	String update(@Valid Project auteur, BindingResult bindingResult) {
 	  if (bindingResult.hasErrors()) {
 	    return WIJZIGEN_VIEW;
 	  }

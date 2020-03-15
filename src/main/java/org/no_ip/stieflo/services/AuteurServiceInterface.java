@@ -2,20 +2,20 @@ package org.no_ip.stieflo.services;
 
 import java.util.List;
 
-import org.no_ip.stieflo.entities.Auteur;
+import org.no_ip.stieflo.entities.Project;
 
 public interface AuteurServiceInterface {
   
-	void create(Auteur reeks); 
+	void create(Project reeks); 
 	
-	Auteur read(long id);
+	Project read(long id);
 	
-	void update(Auteur reeks);
+	void update(Project reeks);
 	
 	void delete(long id);
 	
-	List<Auteur> findAll();
+	List<Project> findAll();
 	
-	List<Auteur> findInNaam(String doelstring);
+	List<Project> findInNaam(String doelstring);
 					
 } 

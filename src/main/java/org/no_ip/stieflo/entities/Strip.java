@@ -100,22 +100,22 @@ public class Strip implements Serializable {
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "strip_tekenaars", joinColumns = @JoinColumn(name="stripid"), inverseJoinColumns = @JoinColumn(name="tekenaarid"))
-	private Set<Auteur> tekenaars;
+	private Set<Project> tekenaars;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "strip_scenaristen", joinColumns = @JoinColumn(name="stripid"), inverseJoinColumns = @JoinColumn(name="scenaristid"))
-	private Set<Auteur> scenaristen;
+	private Set<Project> scenaristen;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "strip_inkleurders", joinColumns = @JoinColumn(name="stripid"), inverseJoinColumns = @JoinColumn(name="inkleurderid"))
-	private Set<Auteur> inkleurders;
+	private Set<Project> inkleurders;
 
 	public Strip () {}
 	
 	public Strip(Reeks reeks, Long albumnr, String titel, Long paginas, boolean hardcover, Long jaar, String speciaal,
 			String beschrijving, String isbntext, Long isbn, Long druknr, Vertaler vertaler, Uitgever uitgever,
-			BigDecimal inkoopprijs, String cover, Set<Auteur> tekenaars, Set<Auteur> scenaristen,
-			Set<Auteur> inkleurders) {
+			BigDecimal inkoopprijs, String cover, Set<Project> tekenaars, Set<Project> scenaristen,
+			Set<Project> inkleurders) {
 		this.albumnr = albumnr;
 		this.titel = titel;
 		this.paginas = paginas;
@@ -197,15 +197,15 @@ public class Strip implements Serializable {
 		return cover;
 	}
 
-	public Set<Auteur> getTekenaars() {
+	public Set<Project> getTekenaars() {
 		return tekenaars;
 	}
 
-	public Set<Auteur> getScenaristen() {
+	public Set<Project> getScenaristen() {
 		return scenaristen;
 	}
 
-	public Set<Auteur> getInkleurders() {
+	public Set<Project> getInkleurders() {
 		return inkleurders;
 	}
 	
@@ -273,15 +273,15 @@ public class Strip implements Serializable {
 		this.cover = cover;
 	}
 
-	public void setTekenaars(Set<Auteur> tekenaars) {
+	public void setTekenaars(Set<Project> tekenaars) {
 		this.tekenaars = tekenaars;
 	}
 
-	public void setScenaristen(Set<Auteur> scenaristen) {
+	public void setScenaristen(Set<Project> scenaristen) {
 		this.scenaristen = scenaristen;
 	}
 
-	public void setInkleurders(Set<Auteur> inkleurders) {
+	public void setInkleurders(Set<Project> inkleurders) {
 		this.inkleurders = inkleurders;
 	}
 

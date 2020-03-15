@@ -143,9 +143,9 @@ public class Reeks implements Serializable {
 	  return naam.hashCode();
 	}
 	
-	@Override
+	/*@Override
 	public String toString() {
 		return this.getNaam()+','+this.getGenre().toString()+','+this.getBeschrijving();
-	}
+	}*/
 	
 }

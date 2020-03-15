@@ -18,8 +18,8 @@ html, body, div, article, nav, ul {
 /*** Body ***/
 body {
 	margin-top: 3em;
-	background-color: #fcffe8;
-	color: #400080;
+	background-color: #f7f9fa;
+	color: #0300c7;
 	font-family: arial;
 }
 
@@ -69,7 +69,7 @@ h2.middle {
 
 /*** Navigation bar ***/
 nav {
-	background: #400080;
+	background: #0300c7;
 	color: white;
 	height: 1.8em;
 	margin-bottom: 1em;
@@ -90,7 +90,7 @@ nav ul,nav ul li ul {
 }
 
 nav>ul>li {
-	background-color: #400080;
+	background-color: #0300c7;
 	float: left;
 	position: relative;
 }
@@ -266,4 +266,9 @@ blockquote {
 
 #reeksaanvullenbutton {
 	
+}
+
+.inline {
+  display: inline-block;
+  margin-left: 1em;
 }

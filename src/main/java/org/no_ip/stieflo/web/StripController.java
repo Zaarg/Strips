@@ -3,6 +3,7 @@ package org.no_ip.stieflo.web;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.validation.Valid;
@@ -19,6 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.no_ip.stieflo.entities.Strip;
 import org.no_ip.stieflo.services.StripServiceInterface;
 import org.no_ip.stieflo.web.forms.ZoekenForm;
+import org.springframework.http.HttpRequest;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller 
 @RequestMapping(path = "/strips", produces = MediaType.TEXT_HTML_VALUE)
@@ -32,6 +36,8 @@ class StripController {
 	private static final String VERWIJDERD_VIEW = "strips/verwijderd";
 	private static final String WIJZIGEN_VIEW = "strips/wijzigen";
 	private static final String REDIRECT_NA_WIJZIGEN = "redirect:/strips";
+        private static final String REEKSEN_REDIRECT = "redirect:/reeksen";
+        private static final String NEXT_STRIP_REDIRECT = "redirect:/strips/toevoegen/clonedfrom{id}";
 	
 	private static final Logger logger = Logger.getLogger(StripController.class.getName());
 	private final StripServiceInterface stripService; 
@@ -96,6 +102,7 @@ class StripController {
 			strip.setId(0);
 			strip.setAlbumnr(strip.getAlbumnr()+1);
 			strip.setTitel("");
+			strip.setDruknr(1l);
 			LocalDateTime now = LocalDateTime.now();
 			strip.setJaar(Long.valueOf(now.getYear()));
 			int length = strip.getIsbntext().length(); 
@@ -108,15 +115,26 @@ class StripController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(params = "toevoegen", method = RequestMethod.POST)
 	public String create(@Valid Strip strip, BindingResult bindingResult) {
 	  if (bindingResult.hasErrors()) {
 	    return TOEVOEGEN_VIEW;
 	  }
-	  stripService.create(strip);
-	  return REDIRECT_NA_TOEVOEGEN;
+	  stripService.create(strip);	  
+          return REEKSEN_REDIRECT;
 	}
-	
+        
+        @RequestMapping(params = "toevoegenvolgende", method = RequestMethod.POST)
+	public String createV(@Valid Strip strip, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	  if (bindingResult.hasErrors()) {
+	    return TOEVOEGEN_VIEW;
+	  }
+	  stripService.create(strip);
+	  redirectAttributes.addAttribute("id", strip.getId());
+          return NEXT_STRIP_REDIRECT;                    
+	}
+	       
+        
 	/** -------------------------- Strip verwijderen -------------------------- **/
 	@RequestMapping(path = "{strip}/verwijderen", method = RequestMethod.POST) 
 	String delete(@PathVariable Strip strip, RedirectAttributes redirectAttributes) { 
@@ -127,10 +145,10 @@ class StripController {
 		try {
 			stripService.delete(id);
 			redirectAttributes.addAttribute("id", id).addAttribute("titel", strip.getTitel());
-			return REDIRECT_NA_VERWIJDEREN; 
+			return REEKSEN_REDIRECT; 
 	    } catch (Exception ex) {
 	    	redirectAttributes.addAttribute("id", id).addAttribute("fout", "Strip verwijderen probleem");
-	    	return REDIRECT_NA_VERWIJDEREN;
+	    	return REEKSEN_REDIRECT;
 	    }
 	}
 		
@@ -165,7 +183,7 @@ class StripController {
 			return WIJZIGEN_VIEW;
 		}
 		stripService.update(strip);
-		return REDIRECT_NA_WIJZIGEN;
+		return REEKSEN_REDIRECT;
 	}
 	
 	/* Vragen voor Frank

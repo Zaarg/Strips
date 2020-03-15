@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Table(name = "auteurs")
-public class Auteur implements Serializable { 
+public class Project implements Serializable { 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -37,9 +37,9 @@ public class Auteur implements Serializable {
 	@ManyToMany(mappedBy="inkleurders")
 	private List<Strip> inkleurderstrips;
 	
-	public Auteur() {}
+	public Project() {}
 	
-	public Auteur(String naam) {
+	public Project(String naam) {
 		setNaam(naam);
 		tekenaarstrips = new ArrayList<>();
 		scenariststrips = new ArrayList<>();
@@ -76,10 +76,10 @@ public class Auteur implements Serializable {
 	
 	@Override
 	public boolean equals(Object obj) {
-	  if ( ! (obj instanceof Auteur)) {
+	  if ( ! (obj instanceof Project)) {
 	    return false;
 	  }
-	  return ((Auteur) obj).naam.equals(this.naam);
+	  return ((Project) obj).naam.equals(this.naam);
 	} 
 	
 	@Override

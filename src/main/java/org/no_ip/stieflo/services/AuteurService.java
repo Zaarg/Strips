@@ -3,7 +3,7 @@ package org.no_ip.stieflo.services;
 import java.util.List;
 
 import org.no_ip.stieflo.daos.AuteurDAOInterface;
-import org.no_ip.stieflo.entities.Auteur;
+import org.no_ip.stieflo.entities.Project;
 import org.no_ip.stieflo.exceptions.HeeftNogStripsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -21,25 +21,25 @@ class AuteurService implements AuteurServiceInterface {
   
 	@Override
 	@ModifyingTransactionalServiceMethod  
-	public void create(Auteur auteur)  {
+	public void create(Project auteur)  {
 		auteurDAO.save(auteur);
 	}
   
 	@Override
-	public Auteur read(long id) {
+	public Project read(long id) {
 		return auteurDAO.findOne(id);
 	} 
   
 	@Override
 	@ModifyingTransactionalServiceMethod 
-	public void update(Auteur auteur) {
+	public void update(Project auteur) {
 		auteurDAO.save(auteur);
 	} 
   
 	@Override
 	@Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)  
 	public void delete(long id) {
-		Auteur auteur = auteurDAO.findOne(id);
+		Project auteur = auteurDAO.findOne(id);
 		if (auteur != null) {
 		  if ( ! (auteur.getTekenaarstrips().isEmpty() || auteur.getScenariststrips().isEmpty() || auteur.getInkleurderstrips().isEmpty())  ) {
 		    throw new HeeftNogStripsException();
@@ -49,12 +49,12 @@ class AuteurService implements AuteurServiceInterface {
 	}  
   
 	@Override
-	public List<Auteur> findAll() {
+	public List<Project> findAll() {
 		return auteurDAO.findAll(new Sort("naam"));
 	} 
   	
 	@Override
-	public List<Auteur> findInNaam(String doelstring) {
+	public List<Project> findInNaam(String doelstring) {
 		return auteurDAO.findByNaamContaining(doelstring);
 	}
 		

@@ -2,7 +2,7 @@ package org.no_ip.stieflo.daos;
 
 import javax.sql.DataSource;
 
-import org.no_ip.stieflo.entities.Auteur;
+import org.no_ip.stieflo.entities.Project;
 import org.no_ip.stieflo.valueobjects.Plaats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ public class CreateDAOBeans {
 	LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setDataSource(dataSource);
-		factory.setPackagesToScan(Auteur.class.getPackage().getName(), Plaats.class.getPackage().getName());
+		factory.setPackagesToScan(Project.class.getPackage().getName(), Plaats.class.getPackage().getName());
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setShowSql(true);
 		factory.setJpaVendorAdapter(adapter);

@@ -13,12 +13,17 @@
 <h1>Strip toevoegen</h1>
 	<c:url value='/strips' var='url'/>
 	<form:form action='${url}' commandName='strip' id='toevoegform'>	
-		<jsp:include page='formfields.jsp' />		
-		<input type='submit' value='Toevoegen' id='toevoegknop'>
-	</form:form>
+		<jsp:include page='formfields.jsp' />				
+                <div class="inline">
+                    <input type='submit' value='Toevoegen' name='toevoegen' id='toevoegen'>
+                </div><div class="inline">
+                    <input type='submit' value='Toevoegen en volgende' name='toevoegenvolgende' id='toevoegenvolgende'>
+                </div>
+        </form:form>
 	<script>document.getElementById('toevoegform').onsubmit = function() {
-            document.getElementById('toevoegknop').disabled = true;};     
-    </script>  
+                    document.getElementById('toevoegknop').disabled = true;                    
+                };            
+        </script>  
 </div>
 </body>
 </html> 

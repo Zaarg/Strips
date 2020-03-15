@@ -52,7 +52,7 @@
             <version>5.2.2.Final</version>
         </dependency>
         <dependency>
-            <groupId>org.jsoup</groupId>
+            <groupId>org.jsoup</groupId> <!-- jsoup HTML parser library @ http://jsoup.org/ -->
             <artifactId>jsoup</artifactId>
             <version>1.8.3</version>
         </dependency>
@@ -81,7 +81,7 @@
             <version>1.9.0.RELEASE</version>
         </dependency>
     </dependencies>
-
+	
     <build>
         <plugins>
             <plugin>
